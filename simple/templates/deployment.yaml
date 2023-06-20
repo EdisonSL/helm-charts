@@ -130,6 +130,9 @@ spec:
       {{- if .Values.serviceaccount}}
       serviceAccountName: {{ .Values.serviceaccount.name | default (printf "%s-pod-service-account" .Values.name) }}
       {{- end }}
+      {{- if .Values.deployment.shareProcessNamespace}}
+      shareProcessNamespace: {{ .Values.deployment.shareProcessNamespace }}
+      {{- end }}
       {{- if .Values.deployment.dnsConfig }}
       dnsConfig:
         {{- toYaml .Values.deployment.dnsConfig | nindent 8 }}
